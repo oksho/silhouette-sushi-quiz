@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width">
+<title></title>
+<link href="style.css" rel="stylesheet" type="text/css" media="all" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="js/jquery.bxSlider.min.js"></script>
+<script>
+$(document).ready(function(){
+
+	function shuffleContent(container) {
+		var content = container.find("> *");
+		var total = content.size();
+		content.each(function() {
+			content.eq(Math.floor(Math.random()*total)).prependTo(container);
+		});
+	}
+
+	var sushiyeah = $('#shushislide ul.slide').bxSlider({
+		pager: false,
+		controls: true,
+		infiniteLoop: true,
+		auto: false,
+		randomStart: 'true',
+		onSlideAfter: function($slideElement){
+	      $('.i img').removeClass('disp');
+			$('.i').removeClass('boo');
+			$('.choice').removeClass('disp');
+			$('.namebox').addClass('none');
+			shuffleContent($slideElement.children(".choice"));
+		}
+	});
+	
+	
+	
+	$('.a').on('click', function () {
+		$(this).parent().parent().parent().children('div').removeClass('boo');
+		$(this).parent().parent().parent().children('div').children('img').addClass('disp');
+		$(this).parent().parent().addClass('disp');
+		$(this).parent().parent().next().removeClass('none');
+		$(".asse").attr('src', "img/a.mp3");
+		$(".awrap").trigger('load');
+		$(".awrap").trigger('play');
+		
+		setTimeout(function(){
+		     sushiyeah.goToNextSlide();
+		},800);
+	});
+	$('.boo').on('click', function () {
+		$(this).parent().parent().parent().children('div').addClass('boo');
+		$(".boosse").attr('src', "img/boo.mp3");
+		$(".boosewrap").trigger('load');
+		$(".boosewrap").trigger('play');
+	});
+	
+	
+});
+</script>
+</head>
+
+<body>
+
+
+
+
+
+<div id="shushislide">
+	<ul class="slide">
+		<li>
+			<div class="i"><img src="img/tamago.png" alt=""></div>
+			<ul class="choice">
+				<li><button class="boo"><img src="img/sake.png"></button></li>
+				<li><button class="boo"><img src="img/maguro.png"></button></li>
+				<li><button class="boo"><img src="img/ikura.png"></button></li>
+				<li><button class="a"><img src="img/tamago.png"></button></li>
+			</ul>
+			<div class="namebox none"><strong>たまご</strong></div>
+		</li>
+		<li>
+			<div class="i"><img src="img/maguro.png" alt=""></div>
+			<ul class="choice">
+				<li><button class="boo"><img src="img/ikura.png"></button></li>
+				<li><button class="a"><img src="img/maguro.png"></button></li>
+				<li><button class="boo"><img src="img/sake.png"></button></li>
+				<li><button class="boo"><img src="img/tamago.png"></button></li>
+			</ul>
+			<div class="namebox none"><strong>まぐろ</strong></div>
+		</li>
+		<li>
+			<div class="i"><img src="img/ikura.png" alt=""></div>
+			<ul class="choice">
+				<li><button class="boo"><img src="img/tamago.png"></button></li>
+				<li><button class="boo"><img src="img/maguro.png"></button></li>
+				<li><button class="boo"><img src="img/sake.png"></button></li>
+				<li><button class="a"><img src="img/ikura.png"></button></li>
+			</ul>
+			<div class="namebox none"><strong>いくら</strong></div>
+		</li>
+		<li>
+			<div class="i"><img src="img/sake.png" alt=""></div>
+			<ul class="choice">
+				<li><button class="boo"><img src="img/tamago.png"></button></li>
+				<li><button class="boo"><img src="img/maguro.png"></button></li>
+				<li><button class="boo"><img src="img/ikura.png"></button></li>
+				<li><button class="a"><img src="img/sake.png"></button></li>
+			</ul>
+			<div class="namebox none"><strong>サーモン</strong></div>
+		</li>
+	</ul>
+	<div class="lane"></div>
+</div>
+
+
+<audio class="boosewrap" controls preload="none" style="display: none" id="audioControl">
+<source class="boosse" type="audio/mp3">
+</audio>
+
+<audio class="awrap" controls preload="none" style="display: none" id="audioControl2">
+<source class="asse" type="audio/mp3">
+</audio>
+
+
+</body>
+</html>
