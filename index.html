@@ -30,7 +30,7 @@ $(document).ready(function(){
 			$('.i').removeClass('boo');
 			$('.choice').removeClass('disp');
 			$('.namebox').addClass('none');
-			shuffleContent($slideElement.children(".choice"));
+			shuffleContent($slideElement.children('.choice'));
 		}
 	});
 	
@@ -41,9 +41,9 @@ $(document).ready(function(){
 		$(this).parent().parent().parent().children('div').children('img').addClass('disp');
 		$(this).parent().parent().addClass('disp');
 		$(this).parent().parent().next().removeClass('none');
-		$(".asse").attr('src', "img/a.mp3");
-		$(".awrap").trigger('load');
-		$(".awrap").trigger('play');
+		$('.asse').attr('src', 'img/a.mp3');
+		$('.awrap').trigger('load');
+		$('.awrap').trigger('play');
 		
 		setTimeout(function(){
 		     sushiyeah.goToNextSlide();
@@ -51,9 +51,9 @@ $(document).ready(function(){
 	});
 	$('.boo').on('click', function () {
 		$(this).parent().parent().parent().children('div').addClass('boo');
-		$(".boosse").attr('src', "img/boo.mp3");
-		$(".boosewrap").trigger('load');
-		$(".boosewrap").trigger('play');
+		$('.boosse').attr('src', 'img/boo.mp3');
+		$('.boosewrap').trigger('load');
+		$('.boosewrap').trigger('play');
 	});
 	
 	
